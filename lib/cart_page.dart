@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/global_variables.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/cart_provider.dart';
 
-class CartPage extends StatefulWidget {
+class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
-  State<CartPage> createState() => _CartPageState();
-}
-
-class _CartPageState extends State<CartPage> {
-  @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context).cart;
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -39,7 +37,6 @@ class _CartPageState extends State<CartPage> {
                   ),
                   trailing: IconButton(
                     onPressed: () {
-                      // Delete confirmation dialog box
                       showDialog(
                         context: context,
                         builder: (context) {
@@ -63,9 +60,11 @@ class _CartPageState extends State<CartPage> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  setState(() {
-                                    cart.removeAt(index);
-                                  });
+                                  Provider.of<CartProvider>(
+                                    context,
+                                    listen: false,
+                                  ).removeProduct(cartItem);
+
                                   Navigator.of(context).pop();
                                 },
                                 child: const Text(

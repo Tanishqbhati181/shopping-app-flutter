@@ -16,7 +16,6 @@ class _ProductListState extends State<ProductList> {
 
   @override
   Widget build(BuildContext context) {
-    // Filter Logic: Agar 'ALL' hai to saare products, nahi to company name match karega
     final filteredProducts = selectedIndex == 0
         ? products
         : products

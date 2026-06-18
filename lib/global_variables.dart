@@ -33,4 +33,3 @@ List<Map<String, Object>> products = [
   },
 ];
 
-List<Map<String, Object>> cart = [];

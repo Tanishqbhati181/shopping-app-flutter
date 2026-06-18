@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/global_variables.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/cart_provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, Object> product;
@@ -87,8 +88,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (selectedSize != 0) {
-                        // Cart me product append karne ka function
-                        cart.add({
+                        final cartProvider = Provider.of<CartProvider>(context,listen: false);
+                        cartProvider.addProduct({
                           'id': widget.product['id']!,
                           'title': widget.product['title']!,
                           'price': widget.product['price']!,

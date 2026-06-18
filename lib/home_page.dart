@@ -15,8 +15,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // EDIT: Humne IndexedStack hata diya kyunki vo state ko freeze kar deta hai.
-      // Ab ye har tap par fresh UI render karega jisse cart items turant dikhenge!
       body: currentScreen == 0 ? const ProductList() : const CartPage(),
 
       bottomNavigationBar: BottomNavigationBar(
